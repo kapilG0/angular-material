@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   blogInfo!: BlogInfo;
   blogName: string = "";
   // start with default image to prevent 404 when returning from post-details page
-  blogImage: string = "/assets/images/angular-headless-hashnode-logo.jpg";
+  blogImage: string = "/assets/images/anguhashblog-logo.jpg";
   blogSocialLinks!: BlogLinks;
   seriesList!: SeriesList[];
   themeService: ThemeService = inject(ThemeService);
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
         if (this.blogInfo.isTeam && this.blogInfo.favicon) {
           this.blogImage = this.blogInfo.favicon;
         } else {
-          this.blogImage = '/assets/images/angular-headless-hashnode-logo.jpg'
+          this.blogImage = '/assets/images/anguhashblog-logo.jpg'
         }
         if (!this.blogInfo.isTeam) {
           this.blogService
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
               if (data.profilePicture) {
                 this.blogImage = data.profilePicture;
               } else {
-                this.blogImage = '/assets/images/angular-headless-hashnode-logo.jpg'
+                this.blogImage = '/assets/images/anguhashblog-logo.jpg'
               }
             });
         }
