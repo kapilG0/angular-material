@@ -54,7 +54,7 @@ describe('PostDetailComponent', () => {
 
 const mockPost = {
   id: '65cb82d27994f52be32832f6',
-  slug: 'how-to-use-angular-headless-hashnode',
+  slug: 'how-to-use-AnguHashBlog',
   title: 'Test Post',
   readTimeInMinutes: 3,
   tags: [

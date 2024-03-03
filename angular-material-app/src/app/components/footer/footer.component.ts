@@ -10,5 +10,5 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class FooterComponent {
   year = new Date().getFullYear();
-  blogName: string = 'Angular Headless Hashnode';
+  blogName: string = 'AnguHashBlog';
 }
