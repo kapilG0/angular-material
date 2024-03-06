@@ -92,7 +92,7 @@ query Publication ($host: String!) {
 `;
 
 export const GET_POSTS_IN_SERIES = gql`
-query Publication ($host: String!, $slug: String!, $after: String!) {
+query Publication ($host: String!, $slug: String!) {
   publication(host: $host) {
     id,
     isTeam ,
