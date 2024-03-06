@@ -8,12 +8,10 @@
       <button mat-mini-fab class="search-button" (click)="openSearchDialog()">
         <mat-icon>search</mat-icon>
       </button>
+      <button mat-mini-fab class="search-button" (click)="openSettingsDialog()">
+        <mat-icon>settings</mat-icon>
+      </button>
       <mat-slide-toggle checked (click)="toggleTheme()"></mat-slide-toggle>
-      @if (themeService.themeSignal() === 'dark'){
-      <mat-icon color="accent">bedtime</mat-icon>
-      } @else {
-      <mat-icon>brightness_5</mat-icon>
-      }
     </div>
   </mat-toolbar-row>
   <mat-toolbar-row>

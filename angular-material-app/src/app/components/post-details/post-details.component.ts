@@ -44,6 +44,7 @@ import { MatSlideToggle } from "@angular/material/slide-toggle";
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
 	mobileQuery: MediaQueryList;
+  blogURL!: string;
 	blogInfo!: BlogInfo;
 	blogName: string = "";
 	blogSocialLinks!: BlogLinks;
@@ -63,17 +64,18 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
+    this.blogURL = this.blogService.getBlogURL();
 		this.querySubscription = this.blogService
-			.getBlogInfo()
+			.getBlogInfo(this.blogURL)
 			.subscribe((data) => {
 				this.blogInfo = data;
 				this.blogName = this.blogInfo.title;
         const { __typename, ...links } = data.links;
         this.blogSocialLinks = links;
 			});
-		this.post$ = this.blogService.getSinglePost(this.slug);
+		this.post$ = this.blogService.getSinglePost(this.blogURL,this.slug);
 		this.querySubscription = this.blogService
-			.getSeriesList()
+			.getSeriesList(this.blogURL)
 			.subscribe((data) => {
 				this.seriesList = data;
 			});
