@@ -40,7 +40,6 @@ export class SearchDialogComponent {
     this.blogService.searchPosts(this.blogId, query)
       .subscribe(response => {
         this.posts = response;
-        console.log(this.posts);
       });
   }
 

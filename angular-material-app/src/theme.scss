@@ -51,6 +51,7 @@ $dark-text-color: #333;
   color: $light-text-color;
 
   mat-toolbar {
+    color: $light-text-color;
     .search-button {
       background-color: #333;
       color: #ef96ff;
@@ -58,6 +59,7 @@ $dark-text-color: #333;
   }
 
   article {
+    color: $light-text-color;
     .published-date,
     .read-time {
       background-color: #555;

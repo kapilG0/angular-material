@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { ThemeService } from '../../services/theme.service';
 
 
 @Component({
@@ -17,5 +16,4 @@ import { ThemeService } from '../../services/theme.service';
   styleUrl: './layout.component.scss'
 })
 export class LayoutComponent {
-  themeService: ThemeService = inject(ThemeService);
 }

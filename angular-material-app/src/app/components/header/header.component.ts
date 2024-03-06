@@ -6,13 +6,15 @@ import { SeriesList } from "../../models/post";
 import { BlogInfo, BlogLinks } from "../../models/blog-info";
 import { BlogService } from "../../services/blog.service";
 import { MatDialog } from "@angular/material/dialog";
-import { FollowDialogComponent } from "../../partials/follow-dialog/follow-dialog.component";
 import { SearchDialogComponent } from "../../partials/search-dialog/search-dialog.component";
+import { SettingsDialogComponent } from "../../partials/settings-dialog/settings-dialog.component";
+import { FollowDialogComponent } from "../../partials/follow-dialog/follow-dialog.component";
 
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-header",
@@ -29,6 +31,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
   styleUrl: "./header.component.scss",
 })
 export class HeaderComponent implements OnInit {
+  blogURL!: string;
   blogInfo!: BlogInfo;
   blogName: string = "";
   // start with default image to prevent 404 when returning from post-details page
@@ -37,6 +40,7 @@ export class HeaderComponent implements OnInit {
   seriesList!: SeriesList[];
   themeService: ThemeService = inject(ThemeService);
   blogService: BlogService = inject(BlogService);
+  private querySubscription?: Subscription;
 
   constructor(
     public dialog: MatDialog,
@@ -45,8 +49,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.blogService
-      .getBlogInfo()
+    this.blogURL = this.blogService.getBlogURL();
+    this.querySubscription = this.blogService
+      .getBlogInfo(this.blogURL)
       .subscribe((data) => {
         this.blogInfo = data;
         this.blogName = this.blogInfo.title;
@@ -57,7 +62,7 @@ export class HeaderComponent implements OnInit {
         }
         if (!this.blogInfo.isTeam) {
           this.blogService
-            .getAuthorInfo()
+            .getAuthorInfo(this.blogURL)
             .subscribe((data) => {
               if (data.profilePicture) {
                 this.blogImage = data.profilePicture;
@@ -71,7 +76,7 @@ export class HeaderComponent implements OnInit {
       });
 
     this.blogService
-      .getSeriesList()
+      .getSeriesList(this.blogURL)
       .subscribe((data) => {
         this.seriesList = data;
       });
@@ -79,14 +84,6 @@ export class HeaderComponent implements OnInit {
 
   toggleTheme() {
     this.themeService.updateTheme();
-  }
-
-  openFollowDialog() {
-    this.dialog.open(FollowDialogComponent, {
-      height: "50vh",
-      width: "26vw",
-    });
-    this.applyDialogTheme();
   }
 
   openSearchDialog() {
@@ -100,6 +97,22 @@ export class HeaderComponent implements OnInit {
     this.applyDialogTheme();
   }
 
+  openSettingsDialog() {
+    this.dialog.open(SettingsDialogComponent, {
+      height: "45vh",
+      width: "26vw",
+    });
+    this.applyDialogTheme();
+  }
+
+  openFollowDialog() {
+    this.dialog.open(FollowDialogComponent, {
+      height: "50vh",
+      width: "26vw",
+    });
+    this.applyDialogTheme();
+  }
+
   applyDialogTheme() {
     let followDialog = this.document.querySelector(
       "mat-dialog-container"
@@ -108,4 +121,8 @@ export class HeaderComponent implements OnInit {
       followDialog.classList.add("dark");
     }
   }
+
+  ngOnDestroy(): void {
+		this.querySubscription?.unsubscribe();
+	}
 }

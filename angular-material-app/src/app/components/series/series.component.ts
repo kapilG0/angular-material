@@ -1,3 +1,4 @@
+
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
@@ -15,22 +16,24 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './series.component.scss'
 })
 export class SeriesComponent implements OnInit {
-    slug: string = "";
-    postsInSeries$!: Observable<Post[]>;
-    blogService: BlogService = inject(BlogService);
-    private router = inject(Router);
-      route: ActivatedRoute = inject(ActivatedRoute);
-  
-      ngOnInit(): void {
-          this.postsInSeries$ = this.route.params.pipe(
-        switchMap((params: Params) => {
-          this.slug = params["slug"];
-          return this.blogService.getPostsInSeries(this.slug);
-        })
-      );
-      }
-  
-    navigateToPost(slug: string) {
-      this.router.navigate(['/post', slug]);
-    }
+	blogURL!: string;
+	slug: string = "";
+	postsInSeries$!: Observable<Post[]>;
+	blogService: BlogService = inject(BlogService);
+	private router = inject(Router);
+	route: ActivatedRoute = inject(ActivatedRoute);
+
+	ngOnInit(): void {
+    this.blogURL = this.blogService.getBlogURL();
+		this.postsInSeries$ = this.route.params.pipe(
+			switchMap((params: Params) => {
+				this.slug = params["slug"];
+				return this.blogService.getPostsInSeries(this.blogURL,this.slug);
+			})
+		);
+	}
+
+	navigateToPost(slug: string) {
+		this.router.navigate(["/post", slug]);
+	}
 }

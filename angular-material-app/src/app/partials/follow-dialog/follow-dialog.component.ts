@@ -7,7 +7,6 @@ import {
 } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { ThemeService } from "../../services/theme.service";
 
 @Component({
 	selector: "app-follow-dialog",
