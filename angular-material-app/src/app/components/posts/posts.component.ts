@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { BlogService } from "../../services/blog.service";
 import { Router, RouterLink } from "@angular/router";
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, SlicePipe } from "@angular/common";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { map } from "rxjs/operators";
 import { MatGridListModule } from "@angular/material/grid-list";
@@ -12,7 +12,7 @@ import { Post } from "../../models/post";
 @Component({
 	selector: "app-posts",
 	standalone: true,
-	imports: [RouterLink, MatCardModule, MatGridListModule, AsyncPipe],
+	imports: [RouterLink, MatCardModule, MatGridListModule, AsyncPipe, SlicePipe],
 	templateUrl: "./posts.component.html",
 	styleUrl: "./posts.component.scss",
 })
