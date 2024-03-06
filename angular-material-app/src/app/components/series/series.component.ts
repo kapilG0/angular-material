@@ -3,14 +3,14 @@ import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { Post } from '../../models/post';
 import { BlogService } from '../../services/blog.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, SlicePipe } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-series',
   standalone: true,
-  imports: [RouterLink, AsyncPipe, MatGridListModule, MatCardModule],
+  imports: [RouterLink, AsyncPipe, MatGridListModule, MatCardModule, SlicePipe],
   templateUrl: './series.component.html',
   styleUrl: './series.component.scss'
 })

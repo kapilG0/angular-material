@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { BlogService } from "../../services/blog.service";
 import { Router, RouterLink } from "@angular/router";
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, SlicePipe } from "@angular/common";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { map } from "rxjs/operators";
 import { MatGridListModule } from "@angular/material/grid-list";
@@ -12,7 +12,7 @@ import { Post } from "../../models/post";
 @Component({
 	selector: "app-posts",
 	standalone: true,
-	imports: [RouterLink, MatCardModule, MatGridListModule, AsyncPipe],
+	imports: [RouterLink, MatCardModule, MatGridListModule, AsyncPipe, SlicePipe],
 	templateUrl: "./posts.component.html",
 	styleUrl: "./posts.component.scss",
 })
@@ -54,13 +54,5 @@ export class PostsComponent implements OnInit {
 
 	navigateToPost(slug: string) {
 		this.router.navigate(["/post", slug]);
-	}
-
-	truncateTitle(title: string): string {
-		const maxLength = 90;
-		if (title.length > maxLength) {
-		  return title.substring(0, maxLength - 3) + "...";
-		}
-		return title;
 	}
 }
