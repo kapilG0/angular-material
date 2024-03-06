@@ -7,7 +7,7 @@
           <img [src]="post.coverImage.url">
         </div>
         <div class="card-title">
-          <h3>{{post.title}}</h3>
+          <h3>{{ truncateTitle(post.title) }}</h3>
         </div>
       </a>
     </mat-card>

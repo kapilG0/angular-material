@@ -55,4 +55,12 @@ export class PostsComponent implements OnInit {
 	navigateToPost(slug: string) {
 		this.router.navigate(["/post", slug]);
 	}
+
+	truncateTitle(title: string): string {
+		const maxLength = 90;
+		if (title.length > maxLength) {
+		  return title.substring(0, maxLength - 3) + "...";
+		}
+		return title;
+	}
 }
