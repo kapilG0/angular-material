@@ -17,39 +17,14 @@ import { Post } from "../../models/post";
 	styleUrl: "./posts.component.scss",
 })
 export class PostsComponent implements OnInit {
+  blogURL!: string;
   posts$!: Observable<Post[]>;
 	private blogService = inject(BlogService);
 	private router = inject(Router);
-	private breakpointObserver = inject(BreakpointObserver);
-
-	cols$ = this.breakpointObserver
-		.observe([
-			Breakpoints.XSmall,
-			Breakpoints.Small,
-			Breakpoints.Medium,
-			Breakpoints.Large,
-			Breakpoints.XLarge,
-		])
-		.pipe(
-			map(({ breakpoints }) => {
-				if (breakpoints[Breakpoints.XSmall]) {
-					return 1;
-				} else if (breakpoints[Breakpoints.Small]) {
-					return 2;
-				} else if (
-					breakpoints[Breakpoints.Medium] ||
-					breakpoints[Breakpoints.Large]
-				) {
-					return 3;
-				} else if (breakpoints[Breakpoints.XLarge]) {
-					return 4;
-				}
-				return 3;
-			})
-		);
 
 	ngOnInit() {
-		this.posts$ = this.blogService.getPosts();
+    this.blogURL = this.blogService.getBlogURL();
+		this.posts$ = this.blogService.getPosts(this.blogURL);
 	}
 
 	navigateToPost(slug: string) {

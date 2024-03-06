@@ -15,6 +15,7 @@ import { BlogService } from './services/blog.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'angular-material-app';
+  blogURL!: string;
   blogInfo!: BlogInfo;
 	siteFavicon: any;
 	themeService: ThemeService = inject(ThemeService);
@@ -24,9 +25,10 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
 	ngOnInit(): void {
+    this.blogURL = this.blogService.getBlogURL();
     this.siteFavicon = this.document.querySelector('link[rel="icon"]') as HTMLLinkElement;
 		this.querySubscription = this.blogService
-			.getBlogInfo()
+			.getBlogInfo(this.blogURL)
 			.subscribe((data) => {
 				this.blogInfo = data;
 				if (this.blogInfo.isTeam && this.blogInfo.favicon) {
@@ -35,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
 					this.siteFavicon.href = "favicon.ico";
 				}
 				if (!this.blogInfo.isTeam) {
-					this.blogService.getAuthorInfo().subscribe((data) => {
+					this.blogService.getAuthorInfo(this.blogURL).subscribe((data) => {
 						if (data.profilePicture) {
 							this.siteFavicon.href = data.profilePicture;
 						} else {
