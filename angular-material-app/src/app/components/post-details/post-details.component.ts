@@ -9,6 +9,7 @@ import {
 } from "@angular/core";
 import { BlogService } from "../../services/blog.service";
 import { AsyncPipe, DatePipe, KeyValuePipe } from "@angular/common";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { Post, SeriesList } from "../../models/post";
 import { Observable, Subscription } from "rxjs";
 
@@ -51,6 +52,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 	seriesList!: SeriesList[];
 	post$!: Observable<Post>;
   themeService: ThemeService = inject(ThemeService);
+  private sanitizer: DomSanitizer = inject(DomSanitizer);
 	private blogService = inject(BlogService);
 	private querySubscription?: Subscription;
 	private _mobileQueryListener: () => void;
@@ -83,6 +85,10 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 
   toggleTheme(): void {
     this.themeService.updateTheme();
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
 	ngOnDestroy(): void {
