@@ -9,6 +9,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { SearchDialogComponent } from "../../partials/search-dialog/search-dialog.component";
 import { SettingsDialogComponent } from "../../partials/settings-dialog/settings-dialog.component";
 import { FollowDialogComponent } from "../../partials/follow-dialog/follow-dialog.component";
+import { BlogSocialIconsComponent } from "../blog-social-icons/blog-social-icons.component";
 
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatIconModule } from "@angular/material/icon";
@@ -20,6 +21,7 @@ import { Subscription } from "rxjs";
   selector: "app-header",
   standalone: true,
   imports: [
+    BlogSocialIconsComponent,
     KeyValuePipe,
     RouterLink,
     MatSlideToggleModule,

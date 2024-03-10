@@ -31,18 +31,7 @@
         }
       </mat-nav-list>
       <mat-nav-list class="social">
-        @for (social of blogSocialLinks | keyvalue; track social) {
-          @if (social.value && social.key !== 'website') {
-          <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-{{social.key}}"></i>
-          </a>
-          }
-          @if (social.value && social.key === 'website') {
-          <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
-            <i class="fa-solid fa-globe"></i>
-          </a>
-          }
-        }
+        <app-blog-social-icons [blogSocialLinks]="blogSocialLinks"></app-blog-social-icons>
       </mat-nav-list>
     </mat-sidenav>
 
@@ -69,7 +58,7 @@
             </div>
           </div>
         </div>
-        <div class="content" [innerHTML]="sanitizeHtml(post.content.html)"></div>
+        <div class="content" [innerHTML]="post.content.html | sanitizerHtml" youtubeVideoEmbed></div>
       </article>
       }
       <app-footer></app-footer>
