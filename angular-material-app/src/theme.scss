@@ -52,7 +52,7 @@ $dark-text-color: #333;
 
   mat-toolbar {
     color: $light-text-color;
-    .search-button {
+    .control-button {
       background-color: #333;
       color: #ef96ff;
     }
@@ -82,7 +82,7 @@ $dark-text-color: #333;
     }
   }
 
-  .search-result:hover {
+  .control-result:hover {
     background-color: #212121 !important;
   }
 }
