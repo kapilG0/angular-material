@@ -2,7 +2,7 @@
   <div class="cards-wrapper grid">
     @for (post of postsInSeries$ | async; track post) {
       <mat-card>
-      <a (click)="navigateToPost(post.slug)">
+      <a [routerLink]="['/post', post.slug]">
         <div class="card-image">
           <img [src]="post.coverImage.url">
         </div>

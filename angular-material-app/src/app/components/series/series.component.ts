@@ -27,12 +27,8 @@ export class SeriesComponent implements OnInit {
 		this.postsInSeries$ = this.route.params.pipe(
 			switchMap((params: Params) => {
 				this.slug = params["slug"];
-				return this.blogService.getPostsInSeries(this.blogURL,this.slug);
+				return this.blogService.getPostsInSeries(this.blogURL, this.slug);
 			})
 		);
-	}
-
-	navigateToPost(slug: string) {
-		this.router.navigate(["/post", slug]);
 	}
 }
