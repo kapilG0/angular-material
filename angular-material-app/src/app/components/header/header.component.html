@@ -16,20 +16,7 @@
   </mat-toolbar-row>
   <mat-toolbar-row>
     <div class="social">
-      <div class="social-link">
-        @for (social of blogSocialLinks | keyvalue; track social) {
-        @if (social.value && social.key !== 'website') {
-        <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-{{social.key}}"></i>
-        </a>
-        }
-        @if (social.value && social.key === 'website') {
-        <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
-          <i class="fa-solid fa-globe"></i>
-        </a>
-        }
-        }
-      </div>
+      <app-blog-social-icons [blogSocialLinks]="blogSocialLinks"></app-blog-social-icons>
     </div>
     <div class="follow">
       <button mat-raised-button (click)="openFollowDialog()">Follow</button>

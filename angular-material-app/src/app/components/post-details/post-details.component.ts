@@ -9,30 +9,35 @@ import {
 } from "@angular/core";
 import { BlogService } from "../../services/blog.service";
 import { AsyncPipe, DatePipe, KeyValuePipe } from "@angular/common";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { SanitizerHtmlPipe } from "../../pipes/sanitizer-html.pipe";
+import { YoutubeVideoEmbedDirective } from "../../directives/youtube-video-embed.directive";
 import { Post, SeriesList } from "../../models/post";
 import { Observable, Subscription } from "rxjs";
+import { BlogInfo, BlogLinks } from "../../models/blog-info";
+import { RouterLink } from "@angular/router";
+import { ThemeService } from "../../services/theme.service";
+import { FooterComponent } from "../footer/footer.component";
 
+import { MatSlideToggle } from "@angular/material/slide-toggle";
 import { MatListModule } from "@angular/material/list";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { BlogInfo, BlogLinks } from "../../models/blog-info";
-import { RouterLink } from "@angular/router";
-import { ThemeService } from "../../services/theme.service";
-import { FooterComponent } from "../footer/footer.component";
-import { MatSlideToggle } from "@angular/material/slide-toggle";
+import { BlogSocialIconsComponent } from "../blog-social-icons/blog-social-icons.component";
 
 @Component({
 	selector: "app-post-details",
 	standalone: true,
 	imports: [
-		RouterLink,
     FooterComponent,
+    BlogSocialIconsComponent,
+		RouterLink,
 		AsyncPipe,
 		DatePipe,
     KeyValuePipe,
+    SanitizerHtmlPipe,
+    YoutubeVideoEmbedDirective,
 		MatToolbarModule,
 		MatButtonModule,
 		MatIconModule,
@@ -52,7 +57,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 	seriesList!: SeriesList[];
 	post$!: Observable<Post>;
   themeService: ThemeService = inject(ThemeService);
-  private sanitizer: DomSanitizer = inject(DomSanitizer);
 	private blogService = inject(BlogService);
 	private querySubscription?: Subscription;
 	private _mobileQueryListener: () => void;
@@ -85,10 +89,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 
   toggleTheme(): void {
     this.themeService.updateTheme();
-  }
-
-  sanitizeHtml(html: string): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
 	ngOnDestroy(): void {
