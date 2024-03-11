@@ -25,7 +25,7 @@
   <mat-toolbar-row>
     <div class="series">
       @for (series of seriesList; track series) {
-      <a [routerLink]="'series/' + series.slug" class="series-link">{{ series.name }}</a>
+      <a [routerLink]="['series/', series.slug]" class="series-link">{{ series.name }}</a>
       }
     </div>
   </mat-toolbar-row>

@@ -21,7 +21,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'post/:slug',
+    path: ':slug',
     component: PostDetailsComponent
   }
 ];

@@ -15,12 +15,12 @@ import { Post } from "../../models/post";
 	styleUrl: "./posts.component.scss",
 })
 export class PostsComponent implements OnInit {
-  blogURL!: string;
-  posts$!: Observable<Post[]>;
+	blogURL!: string;
+	posts$!: Observable<Post[]>;
 	private blogService = inject(BlogService);
 
 	ngOnInit() {
-    this.blogURL = this.blogService.getBlogURL();
+		this.blogURL = this.blogService.getBlogURL();
 		this.posts$ = this.blogService.getPosts(this.blogURL);
 	}
 }
