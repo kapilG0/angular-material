@@ -50,6 +50,7 @@ import { BlogSocialIconsComponent } from "../blog-social-icons/blog-social-icons
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
 	mobileQuery: MediaQueryList;
+  date = new Date().getFullYear();
   blogURL!: string;
 	blogInfo!: BlogInfo;
 	blogName: string = "";
@@ -61,7 +62,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 	private querySubscription?: Subscription;
 	private _mobileQueryListener: () => void;
 
-	@Input({ required: true }) slug!: string;
+	@Input({ required: true }) postSlug!: string;
 
 	constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
 		this.mobileQuery = media.matchMedia("(max-width: 600px)");
@@ -79,7 +80,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
         const { __typename, ...links } = data.links;
         this.blogSocialLinks = links;
 			});
-		this.post$ = this.blogService.getSinglePost(this.blogURL,this.slug);
+		this.post$ = this.blogService.getSinglePost(this.blogURL,this.postSlug);
 		this.querySubscription = this.blogService
 			.getSeriesList(this.blogURL)
 			.subscribe((data) => {

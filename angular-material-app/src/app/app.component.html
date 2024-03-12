@@ -1,3 +1,7 @@
 <div [class]="themeService.themeSignal()">
-<router-outlet></router-outlet>
+  <app-header ngSkipHydration />
+  <div class="content">
+    <router-outlet />
+  </div>
+  <app-footer />
 </div>
