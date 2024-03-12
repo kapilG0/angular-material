@@ -19,8 +19,10 @@
   }
 
   .toolbar {
+    position: relative;
     display: flex;
     justify-content: space-between;
+    z-index: 6;
 
     .toolbar-row-start {
       display: flex;
@@ -35,24 +37,32 @@
   }
 
   mat-sidenav-container {
+    overflow: visible;
+
     mat-sidenav {
+      position: fixed;
       display: flex;
       flex-direction: column;
       max-width: 13rem;
       padding: 1rem;
+      z-index: 5;
 
-      h3 {
-        font-weight: 400;
-        text-transform: uppercase;
-        margin: 0 0 0.5rem 0;
-      }
+      .mat-sidenav-menu {
+        margin-top: 2.9rem;
+        h3 {
+          font-size: 1.1rem;
+          font-weight: 400;
+          text-transform: uppercase;
+          margin:0;
+        }
 
-      mat-nav-list {
-        display: flex;
-        font-size: 1rem;
+        mat-nav-list {
+          display: flex;
+          font-size: 1rem;
 
-        &.series {
-          flex-direction: column;
+          &.series {
+            flex-direction: column;
+          }
         }
       }
     }
@@ -142,11 +152,33 @@
           }
         }
       }
+    }
+  }
 
-      app-footer {
-        width: 100%;
-        z-index: 3;
-      }
+  .footer {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 6rem;
+    padding: 1rem;
+    z-index: 6;
+
+    p, small {
+      text-align: center;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    small {
+      color: #999999;
+      font-size: 0.8rem;
     }
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Params, RouterLink } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { Post } from '../../models/post';
 import { BlogService } from '../../services/blog.service';
@@ -19,7 +19,6 @@ export class SeriesComponent implements OnInit {
 	slug: string = "";
 	postsInSeries$!: Observable<Post[]>;
 	blogService: BlogService = inject(BlogService);
-	private router = inject(Router);
 	route: ActivatedRoute = inject(ActivatedRoute);
 
 	ngOnInit(): void {

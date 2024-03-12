@@ -21,18 +21,19 @@
 
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
-      <h3>Series</h3>
-      <mat-nav-list class="series">
-        @for (series of seriesList; track series) {
-        <a [routerLink]="'../../series/' + series.slug">{{series.name}}</a>
-        }
-      </mat-nav-list>
-      <mat-nav-list class="social">
-        <app-blog-social-icons [blogSocialLinks]="blogSocialLinks"></app-blog-social-icons>
-      </mat-nav-list>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'">
+      <div class="mat-sidenav-menu">
+        <h3>Series</h3>
+        <mat-nav-list class="series">
+          @for (series of seriesList; track series) {
+          <a [routerLink]="['/series', series.slug]">{{series.name}}</a>
+          }
+        </mat-nav-list>
+        <mat-nav-list class="social">
+          <app-blog-social-icons [blogSocialLinks]="blogSocialLinks"></app-blog-social-icons>
+        </mat-nav-list>
+      </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
@@ -61,7 +62,11 @@
         <div class="content" [innerHTML]="post.content.html | sanitizerHtml" youtubeVideoEmbed></div>
       </article>
       }
-      <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+  <mat-toolbar class="footer">
+    <p>&copy; {{date}} {{blogName}}</p>
+    <small>Created using<a href="https://github.com/AnguHashBlog" target="_blank">AnguHashBlog</a></small>
+  </mat-toolbar>
 </div>
