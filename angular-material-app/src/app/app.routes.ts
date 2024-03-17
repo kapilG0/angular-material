@@ -13,7 +13,11 @@ export const routes: Routes = [
     component: SeriesComponent
   },
   {
-    path: ':postSlug',
+    path: 'post/:postSlug',
     component: PostDetailsComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
