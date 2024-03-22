@@ -49,11 +49,12 @@
 
       .mat-sidenav-menu {
         margin-top: 2.9rem;
+
         h3 {
           font-size: 1.1rem;
           font-weight: 400;
           text-transform: uppercase;
-          margin:0;
+          margin: 0;
         }
 
         mat-nav-list {
@@ -165,7 +166,8 @@
     padding: 1rem;
     z-index: 6;
 
-    p, small {
+    p,
+    small {
       text-align: center;
       width: 100%;
       margin: 0;
@@ -195,6 +197,7 @@
           .title {
             font-size: 1.4rem;
           }
+
           .content {
             line-height: 2rem;
 
