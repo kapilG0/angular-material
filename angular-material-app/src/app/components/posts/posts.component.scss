@@ -49,3 +49,26 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .posts-view {
+    .cards-wrapper {
+      width: 90vw;
+      mat-card {
+        width: 90%;
+        margin: 0.5rem 0;
+        a {
+          .card-image{
+            width: unset;
+          }
+
+          .card-title {
+            h3 {
+              font-size: 1.1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

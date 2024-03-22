@@ -1,8 +1,8 @@
 @if (showMainHeader) {
 <mat-toolbar>
-  <mat-toolbar-row>
+  <mat-toolbar-row class="first">
     <a routerLink="/" class="logo">
-      <img src="{{blogImage}}" alt="logo" width="12px" height="12px" />
+      <img src="{{blogImage}}" alt="logo" />
       <h1>{{ blogName }}</h1>
     </a>
     <div class="controls">
@@ -15,7 +15,7 @@
       <mat-slide-toggle checked (click)="toggleTheme()"></mat-slide-toggle>
     </div>
   </mat-toolbar-row>
-  <mat-toolbar-row>
+  <mat-toolbar-row class="second">
     <div class="social">
       <app-blog-social-icons [blogSocialLinks]="blogSocialLinks"></app-blog-social-icons>
     </div>
@@ -23,7 +23,7 @@
       <button mat-raised-button (click)="openFollowDialog()">Follow</button>
     </div>
   </mat-toolbar-row>
-  <mat-toolbar-row>
+  <mat-toolbar-row class="third">
     <div class="series">
       @for (series of seriesList; track series) {
       <a [routerLink]="['series/', series.slug]" class="series-link">{{ series.name }}</a>

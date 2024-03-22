@@ -64,3 +64,17 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  :host {
+    h3 {
+      font-size: 1.1rem;
+      padding: 0;
+      margin: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

@@ -182,3 +182,28 @@
     }
   }
 }
+
+
+@media (max-width: 600px) {
+  .post-details-page {
+
+    mat-sidenav-container {
+      mat-sidenav-content {
+        article {
+          max-width: 80vw;
+
+          .title {
+            font-size: 1.4rem;
+          }
+          .content {
+            line-height: 2rem;
+
+            iframe {
+              height: calc(50vw * 0.9);
+            }
+          }
+        }
+      }
+    }
+  }
+}
