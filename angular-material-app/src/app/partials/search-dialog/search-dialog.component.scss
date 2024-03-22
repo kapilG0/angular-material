@@ -59,7 +59,31 @@ mat-dialog-content {
 .no-result-text {
   display: flex;
   justify-content: center;
+
   mat-icon {
     margin-right: 0.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-result {
+    flex-direction: column;
+    padding: 0.6rem 0;
+
+    .info-section {
+      .post-title {
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.4rem;
+      }
+      .author-name{
+        margin: 0.5rem 0 0;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

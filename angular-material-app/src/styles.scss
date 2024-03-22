@@ -52,3 +52,30 @@ article {
     }
   }
 }
+
+// MEDIA QUERIES
+@media (max-width: 600px) {
+  .post-details-page {
+    article {
+      .content {
+        p {
+          font-size: 1.2rem;
+          line-height: 1.5rem;;
+        }
+        pre {
+          overflow-y: scroll;
+        }
+      }
+    }
+  }
+
+  .cdk-overlay-pane.mat-mdc-dialog-panel {
+    width: 90vw !important;
+    // height: 55vh !important;
+  }
+
+  .mdc-dialog__surface::before {
+    height: 55vh !important;
+  }
+
+}
