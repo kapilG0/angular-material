@@ -17,7 +17,6 @@ import { BlogInfo, BlogLinks } from "../../models/blog-info";
 import { RouterLink } from "@angular/router";
 import { ThemeService } from "../../services/theme.service";
 import { FooterComponent } from "../footer/footer.component";
-
 import { MatSlideToggle } from "@angular/material/slide-toggle";
 import { MatListModule } from "@angular/material/list";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -25,6 +24,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { BlogSocialIconsComponent } from "../blog-social-icons/blog-social-icons.component";
+import { ViewportScroller } from "@angular/common";
 
 @Component({
 	selector: "app-post-details",
@@ -49,6 +49,7 @@ import { BlogSocialIconsComponent } from "../blog-social-icons/blog-social-icons
 	styleUrl: "./post-details.component.scss",
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
+	private readonly scroller = inject(ViewportScroller);
 	mobileQuery: MediaQueryList;
   date = new Date().getFullYear();
   blogURL!: string;
@@ -71,6 +72,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
+		this.scroller.scrollToPosition([0, 0]);
     this.blogURL = this.blogService.getBlogURL();
 		this.querySubscription = this.blogService
 			.getBlogInfo(this.blogURL)
