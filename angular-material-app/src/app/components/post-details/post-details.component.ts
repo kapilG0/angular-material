@@ -17,7 +17,7 @@ import { BlogInfo, BlogLinks } from "../../models/blog-info";
 import { RouterLink } from "@angular/router";
 import { ThemeService } from "../../services/theme.service";
 import { ViewportScroller } from "@angular/common";
-import { BlogSocialIconsComponent } from "../blog-social-icons/blog-social-icons.component";
+import { BlogSocialIconsComponent } from "../../partials/blog-social-icons/blog-social-icons.component";
 import { FooterComponent } from "../footer/footer.component";
 
 import { MatSlideToggle } from "@angular/material/slide-toggle";
