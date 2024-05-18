@@ -22,6 +22,14 @@ a {
   margin: 0.4rem;
 }
 
+.mat-toolbar {
+  a {
+    h1 {
+      font-size: 1.3rem
+    }
+  }
+}
+
 article {
   a {
     margin: 0;
@@ -60,8 +68,10 @@ article {
       .content {
         p {
           font-size: 1.2rem;
-          line-height: 1.5rem;;
+          line-height: 1.5rem;
+          ;
         }
+
         pre {
           overflow-y: scroll;
         }
