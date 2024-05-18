@@ -131,6 +131,7 @@ export const GET_SINGLE_POST = gql`
 				author {
           id
 					name
+          username
 					profilePicture
 				}
 				coverImage {
@@ -162,7 +163,9 @@ export const SEARCH_POSTS = gql`
 						url
 					}
 					author {
+            id
 						name
+            username
 					}
 					publishedAt
 					title
