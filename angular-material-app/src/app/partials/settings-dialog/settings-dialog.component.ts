@@ -4,6 +4,7 @@ import {
 	MatDialogActions,
 	MatDialogClose,
 	MatDialogContent,
+	MatDialogRef,
 	MatDialogTitle,
 } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
@@ -35,6 +36,7 @@ export class SettingsDialogComponent implements OnInit {
   blogURLChanged: boolean = false;
   blogService: BlogService = inject(BlogService);
 
+  constructor(public dialogRef: MatDialogRef<SettingsDialogComponent>) {}
 
   ngOnInit(): void {
     this.blogURL = this.blogService.getBlogURL();
@@ -52,6 +54,8 @@ export class SettingsDialogComponent implements OnInit {
       this.blogURLChanged = false;
     } else {
       this.blogURLChanged = true;
+      this.dialogRef.close();
+      window.location.reload();
     }
   }
 
@@ -59,5 +63,7 @@ export class SettingsDialogComponent implements OnInit {
     this.blogService.resetBlogURL();
     this.blogURL = this.blogService.getBlogURL();
     this.blogURLChanged = false;
+    this.dialogRef.close();
+    window.location.reload();
   }
 }
