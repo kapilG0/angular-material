@@ -115,16 +115,10 @@ $light-button-color: #005cbb;
     }
   }
 
-  app-search-dialog {
-    mat-dialog-content {
-
-      .search-result {
-
-        &:hover {
-          background-color: #444 !important;
-          color: #a97aa7;
-        }
-      }
+  .search-result {
+    &:hover {
+      background-color: #444 !important;
+      color: #a97aa7;
     }
   }
 
@@ -154,29 +148,30 @@ $light-button-color: #005cbb;
     }
   }
 
-    // slide toggle overwrites
-    mat-slide-toggle {
-      button {
-        .mdc-switch__track {
-          &::after {
-            background-color: $light-button-bg !important;
-          }
-          &::before {
-            border-color: #2200bb14 !important;
-          }
+  // slide toggle overwrites
+  mat-slide-toggle {
+    button {
+      .mdc-switch__track {
+        &::after {
+          background-color: $light-button-bg !important;
         }
 
-        .mdc-switch__handle {
-          &::after {
-            background-color: $light-button-color !important;
-          }
+        &::before {
+          border-color: #2200bb14 !important;
+        }
+      }
 
-          .mdc-switch__icon {
-            fill: $light-button-bg !important;
-          }
+      .mdc-switch__handle {
+        &::after {
+          background-color: $light-button-color !important;
+        }
+
+        .mdc-switch__icon {
+          fill: $light-button-bg !important;
         }
       }
     }
+  }
 
   mat-sidenav {
     background-color: #f8f8fa;
