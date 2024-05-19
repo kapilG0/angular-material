@@ -30,6 +30,7 @@ export const GET_AUTHOR_INFO = gql`
 			id
 			author {
 				id
+				name
 				username
 				profilePicture
 				socialMediaLinks {

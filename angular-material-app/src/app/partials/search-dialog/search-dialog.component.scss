@@ -30,6 +30,8 @@ mat-dialog-content {
     border-radius: 0.3rem;
 
     &:hover {
+      // applied here since in theme.scss in light mode it had no effect
+      background-color: #989898;
       cursor: pointer;
     }
 
