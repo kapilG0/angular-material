@@ -183,11 +183,15 @@ $light-button-color: #005cbb;
 
   mat-card {
     background-color: $light-bg-color;
-
+    svg{
+      fill:$light-button-color;
+    }
     h3 {
       color: $light-button-color;
     }
   }
+  
+  
 
   article {
 

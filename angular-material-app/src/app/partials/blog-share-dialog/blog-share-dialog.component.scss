@@ -1,0 +1,52 @@
+
+mat-card{
+    margin:5%;
+    background-color: #1e1a1d;
+    align-items: center;
+}
+
+#time-3-icon{
+    fill:white
+}
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem;
+    // background-color: #1e1a1d;
+.dialog-close {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+  .heading{
+    text-align: center;
+    // color: white;
+  }
+  .tile{
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    // color: white;
+    cursor: pointer;
+}
+.tileNotReq{
+    display: flex;
+    align-items: center;
+    // color: white;
+    margin: 10%;
+    cursor: pointer;
+}
+.content{
+    width: 100%;
+}
+}
+::ng-deep .blogsharedialog  .mdc-dialog__surface{
+    // background-color: #1a1e1d !important;
+  }

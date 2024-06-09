@@ -49,6 +49,37 @@
     }
   }
 }
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 10%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.shareicondiv{
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 2%
+}
+.shareicon{
+  cursor: pointer;  
+
+}
+::ng-deep .mat-dialog-container{
+  background-color: #1a1e1d !important;
+}
+
+
+.card-image:hover .image {
+  opacity: 0.5;
+}
+
+.card-image:hover .middle {
+  opacity: 1;
+}
 
 @media (max-width: 600px) {
   .posts-view {
